@@ -281,13 +281,24 @@ namespace WpfSnakeGame
 
         private void UpdateGameStatus()
         {
-            this.Title = "SnakeWPF - Score: " + currentScore + " - Game speed: " + gameTickTimer.Interval.TotalMilliseconds;
+            this.tbStatusScore.Text = currentScore.ToString();
+            this.tbStatusSpeed.Text = gameTickTimer.Interval.TotalMilliseconds.ToString();
         }
 
         private void EndGame()
         {
             gameTickTimer.IsEnabled = false;
             MessageBox.Show("Oooops, you died!\n\nTo start a new game, just press the Space bar...", "SnakeWPF");
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
